@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prizes - Quiz & Win</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Quiz & Win</span>
+                </a>
+                
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="how-it-works.html" class="nav-link">How It Works</a>
+                    <a href="quizzes.html" class="nav-link">Quizzes</a>
+                    <a href="prizes.html" class="nav-link active">Prizes</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="wallet.html" class="wallet-btn">
+                        <span class="wallet-icon">💰</span>
+                        <span class="wallet-points">0 pts</span>
+                    </a>
+                    <a href="quizzes.html" class="btn-primary">Play Now</a>
+                </div>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="how-it-works.html" class="mobile-nav-link">How It Works</a>
+            <a href="quizzes.html" class="mobile-nav-link">Quizzes</a>
+            <a href="prizes.html" class="mobile-nav-link active">Prizes</a>
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+            <a href="wallet.html" class="mobile-nav-link wallet-mobile">
+                <span>💰</span> <span class="wallet-points-mobile">0 Points</span>
+            </a>
+        </div>
+    </header>
+
+    <main style="margin-top: 80px; padding: 3rem 0;">
+        <div class="container">
+            <!-- Header -->
+            <div class="section-header">
+                <h1 class="gradient-text">Amazing Prizes</h1>
+                <p class="section-subtitle">Every quiz guarantees a reward - here's what you can win!</p>
+            </div>
+
+            <!-- Prize Categories -->
+            <div class="prizes-grid">
+                <div class="prize-card">
+                    <div class="prize-icon cash">💵</div>
+                    <h3>Cash Rewards</h3>
+                    <p>Real money credited directly to your account. Convert your points to INR and cashout anytime.</p>
+                    <span class="badge-guaranteed">GUARANTEED</span>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                        <p style="font-weight: 600; color: #10b981;">1000 Points = ₹1 INR</p>
+                    </div>
+                </div>
+                <div class="prize-card">
+                    <div class="prize-icon voucher">🎁</div>
+                    <h3>Gift Vouchers</h3>
+                    <p>Amazon, Google Play, iTunes, and more premium gift vouchers available for redemption.</p>
+                    <span class="badge-guaranteed">GUARANTEED</span>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(168, 85, 247, 0.1); border-radius: 8px;">
+                        <p style="font-weight: 600; color: #a855f7;">Coming Soon</p>
+                    </div>
+                </div>
+                <div class="prize-card">
+                    <div class="prize-icon points">🏆</div>
+                    <h3>Premium Points</h3>
+                    <p>Collect points with every correct answer. Save up for bigger cashouts and special bonuses.</p>
+                    <span class="badge-guaranteed">GUARANTEED</span>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(6, 182, 212, 0.1); border-radius: 8px;">
+                        <p style="font-weight: 600; color: #06b6d4;">100 Points/Answer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Point Rewards Breakdown -->
+            <div class="card-highlight" style="margin-top: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem;">💎 Point Rewards Breakdown</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">1️⃣</div>
+                        <h3>1 Correct Answer</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #06b6d4; margin: 1rem 0;">100</p>
+                        <p style="color: #9ca3af;">Points</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔟</div>
+                        <h3>10 Correct Answers</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #10b981; margin: 1rem 0;">₹1</p>
+                        <p style="color: #9ca3af;">1000 Points</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💯</div>
+                        <h3>100 Correct Answers</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #a855f7; margin: 1rem 0;">₹10</p>
+                        <p style="color: #9ca3af;">10,000 Points</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>1000 Correct Answers</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #ec4899; margin: 1rem 0;">₹100</p>
+                        <p style="color: #9ca3af;">100,000 Points</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Earn Section -->
+            <div style="margin-top: 4rem;">
+                <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">How to Earn More Points</h2>
+                
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <h3>Play Daily</h3>
+                        <p>Complete quizzes every day to accumulate more points faster</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <h3>Answer Correctly</h3>
+                        <p>Each correct answer gives you 100 points instantly</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <h3>Try Different Topics</h3>
+                        <p>Explore various quiz categories to maximize earnings</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">04</div>
+                        <h3>Cashout Anytime</h3>
+                        <p>Convert 1000+ points to INR whenever you want</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guarantee Banner -->
+            <div style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(to right, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 24px; text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🛡️</div>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">100% Guaranteed Prizes</h2>
+                <p style="font-size: 1.25rem; color: #d1d5db; max-width: 48rem; margin: 0 auto 2rem;">
+                    Every single quiz you complete earns you points. No competition, no minimum score required. 
+                    Just play, earn points, and cashout real money!
+                </p>
+                <div class="trust-badges" style="justify-content: center; padding: 0;">
+                    <div class="trust-item">
+                        <span>✓</span> No Entry Fees
+                    </div>
+                    <div class="trust-item">
+                        <span>✓</span> No Hidden Charges
+                    </div>
+                    <div class="trust-item">
+                        <span>✓</span> Instant Rewards
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(to right, rgba(6, 182, 212, 0.2), rgba(147, 51, 234, 0.2)); border-radius: 24px;">
+                <div class="cta-content">
+                    <h2>Start Earning Now!</h2>
+                    <p>Play your first quiz and start collecting points today</p>
+                    <a href="quizzes.html" class="btn-primary btn-large">
+                        <span>▶</span> Browse Quizzes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">⚡</div>
+                        <span class="logo-text">Quiz & Win</span>
+                    </div>
+                    <p>Play free quizzes and win guaranteed prizes every round. No payment required!</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="quizzes.html">Quizzes</a>
+                    <a href="prizes.html">Prizes</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>📧 support@quizandwin.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 San Francisco, CA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Quiz & Win. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wallet.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

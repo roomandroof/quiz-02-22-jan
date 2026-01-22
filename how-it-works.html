@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Quiz & Win</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Quiz & Win</span>
+                </a>
+                
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="how-it-works.html" class="nav-link active">How It Works</a>
+                    <a href="quizzes.html" class="nav-link">Quizzes</a>
+                    <a href="prizes.html" class="nav-link">Prizes</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="wallet.html" class="wallet-btn">
+                        <span class="wallet-icon">💰</span>
+                        <span class="wallet-points">0 pts</span>
+                    </a>
+                    <a href="quizzes.html" class="btn-primary">Play Now</a>
+                </div>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="how-it-works.html" class="mobile-nav-link active">How It Works</a>
+            <a href="quizzes.html" class="mobile-nav-link">Quizzes</a>
+            <a href="prizes.html" class="mobile-nav-link">Prizes</a>
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+            <a href="wallet.html" class="mobile-nav-link wallet-mobile">
+                <span>💰</span> <span class="wallet-points-mobile">0 Points</span>
+            </a>
+        </div>
+    </header>
+
+    <main style="margin-top: 80px; padding: 3rem 0;">
+        <div class="container">
+            <!-- Header -->
+            <div class="section-header">
+                <h1 class="gradient-text">How It Works</h1>
+                <p class="section-subtitle">Start winning prizes in just 4 simple steps</p>
+            </div>
+
+            <!-- Main Steps -->
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Choose a Quiz</h3>
+                    <p>Browse our extensive collection of free quizzes. Pick topics you love - from movies and sports to science and history.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Play For Free</h3>
+                    <p>No entry fees, no hidden charges. Just start playing! Answer 10-15 questions per quiz. Each question has a 30-second timer.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Earn Points</h3>
+                    <p>Get 100 points for every correct answer. Your points are automatically saved to your wallet after each quiz.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Cashout & Win</h3>
+                    <p>Collect 1000 points to cashout ₹1 INR. Convert your points to real money anytime. No minimum withdrawal delay!</p>
+                </div>
+            </div>
+
+            <!-- Point System Explanation -->
+            <div class="card-highlight" style="margin-top: 4rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">💰 Understanding the Point System</h2>
+                <div class="features-grid" style="margin-top: 2rem;">
+                    <div class="feature-card">
+                        <div class="feature-icon">✓</div>
+                        <h3>1 Correct Answer</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #06b6d4;">100 Points</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>10 Correct Answers</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #10b981;">₹1 INR</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>100 Correct Answers</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #a855f7;">₹10 INR</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💎</div>
+                        <h3>1000 Correct Answers</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #ec4899;">₹100 INR</p>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px;">
+                    <p style="font-size: 1.125rem; font-weight: 600; color: #06b6d4;">Conversion Rate: 1000 Points = ₹1 INR</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div style="margin-top: 4rem;">
+                <h2 class="gradient-text" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Frequently Asked Questions</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 style="color: #06b6d4; margin-bottom: 1rem;">Is it really free?</h3>
+                        <p>Yes! Absolutely no entry fees, no payments, no hidden charges. Just play and win.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="color: #06b6d4; margin-bottom: 1rem;">Do I get a prize every time?</h3>
+                        <p>Yes! Every quiz round you complete earns you points. Points = Prize money guaranteed.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="color: #06b6d4; margin-bottom: 1rem;">How do I cashout?</h3>
+                        <p>Once you reach 1000 points, visit your Wallet page and click "Cashout" to convert to INR.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="color: #06b6d4; margin-bottom: 1rem;">Is there a limit on quizzes?</h3>
+                        <p>No limits! Play as many quizzes as you want. The more you play, the more you earn.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="color: #06b6d4; margin-bottom: 1rem;">What if I answer wrong?</h3>
+                        <p>No penalties! Wrong answers don't deduct points. You just don't earn the 100 points for that question.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="color: #06b6d4; margin-bottom: 1rem;">How long do quizzes take?</h3>
+                        <p>Most quizzes take 10-15 minutes. Each question has a 30-second timer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section" style="margin-top: 4rem; padding: 3rem 2rem; background: linear-gradient(to right, rgba(6, 182, 212, 0.2), rgba(147, 51, 234, 0.2)); border-radius: 24px;">
+                <div class="cta-content">
+                    <h2>Ready to Start Winning?</h2>
+                    <p>Join thousands of players earning real money by playing free quizzes</p>
+                    <a href="quizzes.html" class="btn-primary btn-large">
+                        <span>▶</span> Start Playing Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">⚡</div>
+                        <span class="logo-text">Quiz & Win</span>
+                    </div>
+                    <p>Play free quizzes and win guaranteed prizes every round. No payment required!</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="quizzes.html">Quizzes</a>
+                    <a href="prizes.html">Prizes</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>📧 support@quizandwin.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 San Francisco, CA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Quiz & Win. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wallet.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

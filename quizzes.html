@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Quizzes - Quiz & Win</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz-styles.css">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Quiz & Win</span>
+                </a>
+                
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="how-it-works.html" class="nav-link">How It Works</a>
+                    <a href="quizzes.html" class="nav-link active">Quizzes</a>
+                    <a href="prizes.html" class="nav-link">Prizes</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="wallet.html" class="wallet-btn">
+                        <span class="wallet-icon">💰</span>
+                        <span class="wallet-points">0 pts</span>
+                    </a>
+                    <a href="quizzes.html" class="btn-primary">Play Now</a>
+                </div>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="how-it-works.html" class="mobile-nav-link">How It Works</a>
+            <a href="quizzes.html" class="mobile-nav-link active">Quizzes</a>
+            <a href="prizes.html" class="mobile-nav-link">Prizes</a>
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+            <a href="wallet.html" class="mobile-nav-link wallet-mobile">
+                <span>💰</span> <span class="wallet-points-mobile">0 Points</span>
+            </a>
+        </div>
+    </header>
+
+    <main style="margin-top: 80px; padding: 3rem 0;">
+        <div class="container">
+            <!-- Header -->
+            <div class="section-header">
+                <h1 class="gradient-text">Available Quizzes</h1>
+                <p class="section-subtitle">Choose from our extensive collection of quizzes. All are free to play with guaranteed prizes!</p>
+            </div>
+
+            <!-- Quizzes Grid -->
+            <div id="quizzesGrid" class="quizzes-grid"></div>
+
+            <!-- Info Banner -->
+            <div class="card-highlight" style="margin-top: 3rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🏆</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Every Quiz Guarantees a Prize!</h3>
+                <p style="color: #9ca3af; max-width: 48rem; margin: 0 auto;">
+                    Complete any quiz round and receive your reward immediately. No competition, no scoring requirements - just play and win!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">⚡</div>
+                        <span class="logo-text">Quiz & Win</span>
+                    </div>
+                    <p>Play free quizzes and win guaranteed prizes every round. No payment required!</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="quizzes.html">Quizzes</a>
+                    <a href="prizes.html">Prizes</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>📧 support@quizandwin.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 San Francisco, CA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Quiz & Win. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wallet.js"></script>
+    <script src="main.js"></script>
+    <script src="quiz-data.js"></script>
+    <script>
+        // Render quizzes
+        function renderQuizzes() {
+            const grid = document.getElementById('quizzesGrid');
+            grid.innerHTML = quizzes.map(quiz => `
+                <div class="quiz-card">
+                    <div class="quiz-header ${quiz.color}">
+                        <span class="quiz-badge">${quiz.badge}</span>
+                        <div class="quiz-category">⭐ ${quiz.category}</div>
+                    </div>
+                    <div class="quiz-body">
+                        <h3 class="quiz-title">${quiz.title}</h3>
+                        <div class="quiz-meta">
+                            <span>⏱️ ${quiz.questions.length} Questions</span>
+                            <span>🏆 ${quiz.prize || 'Cash Reward'}</span>
+                            <span class="difficulty-badge ${quiz.difficulty.toLowerCase()}">${quiz.difficulty}</span>
+                        </div>
+                        <a href="quiz-game.html?id=${quiz.id}" class="btn-primary" style="width: 100%; text-align: center;">
+                            ▶️ Start Quiz
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderQuizzes);
+    </script>
+</body>
+</html>

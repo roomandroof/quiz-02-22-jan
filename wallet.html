@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Wallet - Quiz & Win</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="wallet-styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Quiz & Win</span>
+                </a>
+                
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="how-it-works.html" class="nav-link">How It Works</a>
+                    <a href="quizzes.html" class="nav-link">Quizzes</a>
+                    <a href="prizes.html" class="nav-link">Prizes</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="wallet.html" class="wallet-btn">
+                        <span class="wallet-icon">💰</span>
+                        <span class="wallet-points">0 pts</span>
+                    </a>
+                    <a href="quizzes.html" class="btn-primary">Play Now</a>
+                </div>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="menu-icon">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="how-it-works.html" class="mobile-nav-link">How It Works</a>
+            <a href="quizzes.html" class="mobile-nav-link">Quizzes</a>
+            <a href="prizes.html" class="mobile-nav-link">Prizes</a>
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+            <a href="wallet.html" class="mobile-nav-link wallet-mobile active">
+                <span>💰</span> <span class="wallet-points-mobile">0 Points</span>
+            </a>
+        </div>
+    </header>
+
+    <main style="margin-top: 80px; padding: 3rem 0;">
+        <div class="container wallet-container">
+            <!-- Header -->
+            <div class="section-header">
+                <div class="wallet-header-icon">💰</div>
+                <h1 class="gradient-text">Your Wallet</h1>
+                <p class="section-subtitle">Track your points and earnings</p>
+            </div>
+
+            <!-- Main Stats -->
+            <div class="wallet-stats">
+                <div class="stat-card points-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-label">Available</span>
+                    </div>
+                    <p class="stat-value" id="totalPoints">0</p>
+                    <p class="stat-desc">Total Points</p>
+                    <div class="stat-divider"></div>
+                    <p class="stat-conversion">= ₹<span id="pointsInr">0.00</span> INR</p>
+                </div>
+
+                <div class="stat-card earnings-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">💵</span>
+                        <span class="stat-label">Total Earned</span>
+                    </div>
+                    <p class="stat-value" id="totalEarnings">₹0</p>
+                    <p class="stat-desc">Total Earnings</p>
+                    <div class="stat-divider"></div>
+                    <p class="stat-conversion">Lifetime cashouts</p>
+                </div>
+
+                <div class="stat-card cashout-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">🎁</span>
+                        <span class="stat-label">Ready</span>
+                    </div>
+                    <p class="stat-value" id="cashoutAmount">0</p>
+                    <p class="stat-desc">INR to Cashout</p>
+                    <div class="stat-divider"></div>
+                    <p class="stat-conversion"><span id="pointsToNext">1000</span> points to next ₹1</p>
+                </div>
+            </div>
+
+            <!-- Cashout Section -->
+            <div class="cashout-section">
+                <div class="cashout-content">
+                    <div class="cashout-icon">🏆</div>
+                    <h2>Cashout Your Earnings</h2>
+                    <p class="cashout-subtitle">Convert your points to real money!</p>
+
+                    <div class="cashout-conversion">
+                        <span class="conversion-points" id="displayPoints">0 points</span>
+                        <span class="conversion-equals">=</span>
+                        <span class="conversion-inr">₹<span id="displayInr">0.00</span> INR</span>
+                    </div>
+
+                    <div id="cashoutArea">
+                        <!-- Cashout button or message will be rendered here -->
+                    </div>
+
+                    <div class="cashout-note">
+                        <p>* Minimum cashout: 1000 points (₹1 INR) | Conversion Rate: 1000 points = ₹1 INR</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="how-it-works-cards">
+                <div class="hiw-card">
+                    <div class="hiw-icon">📈</div>
+                    <h3>Play Quizzes</h3>
+                    <p>Earn 100 points for each correct answer</p>
+                </div>
+                <div class="hiw-card">
+                    <div class="hiw-icon">⚡</div>
+                    <h3>Collect Points</h3>
+                    <p>Accumulate 1000 points to cashout ₹1 INR</p>
+                </div>
+                <div class="hiw-card">
+                    <div class="hiw-icon">💵</div>
+                    <h3>Cashout</h3>
+                    <p>Withdraw your earnings anytime</p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="wallet-actions">
+                <a href="quizzes.html" class="btn-primary btn-large">Play More Quizzes</a>
+                <a href="prizes.html" class="btn-secondary btn-large">View All Prizes</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cashout Modal -->
+    <div class="modal" id="cashoutModal">
+        <div class="modal-content">
+            <div id="modalBody">
+                <!-- Modal content will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">⚡</div>
+                        <span class="logo-text">Quiz & Win</span>
+                    </div>
+                    <p>Play free quizzes and win guaranteed prizes every round. No payment required!</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="quizzes.html">Quizzes</a>
+                    <a href="prizes.html">Prizes</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>📧 support@quizandwin.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 San Francisco, CA</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Quiz & Win. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wallet.js"></script>
+    <script src="main.js"></script>
+    <script>
+        function updateCashoutArea() {
+            const cashoutArea = document.getElementById('cashoutArea');
+            const canCashout = wallet.points >= 1000;
+            const cashoutAmount = Math.floor(wallet.points / 1000);
+            
+            if (canCashout) {
+                cashoutArea.innerHTML = `
+                    <button class="btn-cashout" onclick="showCashoutModal()">
+                        Cashout ₹${cashoutAmount} Now
+                    </button>
+                `;
+            } else {
+                const pointsNeeded = 1000 - wallet.points;
+                cashoutArea.innerHTML = `
+                    <p class="cashout-message">You need ${pointsNeeded} more points to cashout</p>
+                    <a href="quizzes.html" class="btn-primary btn-large">Play More Quizzes</a>
+                `;
+            }
+
+            // Update conversion display
+            document.getElementById('displayPoints').textContent = `${wallet.points} points`;
+            document.getElementById('displayInr').textContent = (wallet.points / 1000).toFixed(2);
+        }
+
+        function showCashoutModal() {
+            const modal = document.getElementById('cashoutModal');
+            const modalBody = document.getElementById('modalBody');
+            const cashoutAmount = Math.floor(wallet.points / 1000);
+            
+            modalBody.innerHTML = `
+                <div class="modal-icon">🎁</div>
+                <h3 class="modal-title">Confirm Cashout</h3>
+                <div class="modal-stats">
+                    <div class="modal-stat">
+                        <p class="modal-stat-label">Points to Convert</p>
+                        <p class="modal-stat-value points">${cashoutAmount * 1000} points</p>
+                    </div>
+                    <div class="modal-stat">
+                        <p class="modal-stat-label">Amount to Receive</p>
+                        <p class="modal-stat-value inr">₹${cashoutAmount} INR</p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeCashoutModal()">Cancel</button>
+                    <button class="btn-cashout" onclick="confirmCashout()">Confirm</button>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        function closeCashoutModal() {
+            const modal = document.getElementById('cashoutModal');
+            modal.classList.remove('active');
+        }
+
+        function confirmCashout() {
+            const result = wallet.cashout();
+            
+            if (result.success) {
+                const modalBody = document.getElementById('modalBody');
+                modalBody.innerHTML = `
+                    <div class="modal-icon success">✓</div>
+                    <h3 class="modal-title">Cashout Successful!</h3>
+                    <p class="modal-message">₹${result.amount} has been added to your earnings!</p>
+                `;
+                
+                setTimeout(() => {
+                    closeCashoutModal();
+                    updateCashoutArea();
+                }, 3000);
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('cashoutModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cashoutModal') {
+                closeCashoutModal();
+            }
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            wallet.updateDisplay();
+            updateCashoutArea();
+        });
+    </script>
+</body>
+</html>

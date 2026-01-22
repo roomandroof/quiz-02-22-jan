@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game - Quiz & Win</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz-styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Quiz & Win</span>
+                </a>
+                
+                <div class="header-actions">
+                    <a href="wallet.html" class="wallet-btn">
+                        <span class="wallet-icon">💰</span>
+                        <span class="wallet-points">0 pts</span>
+                    </a>
+                    <a href="quizzes.html" class="btn-secondary">Exit Quiz</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="margin-top: 80px; padding: 3rem 0; min-height: calc(100vh - 80px);">
+        <div class="container quiz-game-container" id="gameContainer">
+            <!-- Quiz game will be rendered here -->
+        </div>
+    </main>
+
+    <script src="wallet.js"></script>
+    <script src="quiz-data.js"></script>
+    <script>
+        // Global game variable
+        let game;
+
+        class QuizGame {
+            constructor(quizId) {
+                this.quiz = quizzes.find(q => q.id === parseInt(quizId));
+                if (!this.quiz) {
+                    window.location.href = 'quizzes.html';
+                    return;
+                }
+                
+                this.currentQuestion = 0;
+                this.score = 0;
+                this.selectedAnswer = null;
+                this.isAnswered = false;
+                this.timeLeft = 30;
+                this.timer = null;
+                this.correctAnswers = 0;
+                
+                this.render();
+                this.startTimer();
+            }
+
+            startTimer() {
+                if (this.timer) {
+                    clearInterval(this.timer);
+                }
+                
+                this.timer = setInterval(() => {
+                    this.timeLeft--;
+                    this.updateTimer();
+                    
+                    if (this.timeLeft <= 0) {
+                        this.stopTimer();
+                        this.handleTimeout();
+                    }
+                }, 1000);
+            }
+
+            stopTimer() {
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                }
+            }
+
+            updateTimer() {
+                const timerEl = document.getElementById('timer');
+                const timerBadge = document.getElementById('timerBadge');
+                if (timerEl) {
+                    timerEl.textContent = this.timeLeft + 's';
+                    if (this.timeLeft <= 10) {
+                        timerBadge.classList.add('warning');
+                    } else {
+                        timerBadge.classList.remove('warning');
+                    }
+                }
+            }
+
+            handleTimeout() {
+                if (this.isAnswered) return;
+                
+                this.isAnswered = true;
+                const question = this.quiz.questions[this.currentQuestion];
+                
+                // Show correct answer
+                const correctBtn = document.getElementById('option' + question.correctAnswer);
+                if (correctBtn) {
+                    correctBtn.classList.add('correct');
+                    correctBtn.innerHTML = '<span>' + question.options[question.correctAnswer] + '</span><span>✓</span>';
+                }
+                
+                // Disable all buttons
+                for (let i = 0; i < question.options.length; i++) {
+                    const btn = document.getElementById('option' + i);
+                    if (btn) btn.disabled = true;
+                }
+                
+                this.showFeedback(false, 'timeout');
+            }
+
+            handleAnswer(index) {
+                if (this.isAnswered) return;
+                
+                this.stopTimer();
+                this.selectedAnswer = index;
+                this.isAnswered = true;
+                
+                const correct = index === this.quiz.questions[this.currentQuestion].correctAnswer;
+                if (correct) {
+                    this.score += 100;
+                    this.correctAnswers++;
+                }
+                
+                this.showAnswerFeedback(correct);
+            }
+
+            showAnswerFeedback(isCorrect) {
+                const question = this.quiz.questions[this.currentQuestion];
+                
+                // Update score display
+                const scoreEl = document.getElementById('score');
+                if (scoreEl) scoreEl.textContent = this.score + ' pts';
+                
+                // Update option buttons
+                for (let i = 0; i < question.options.length; i++) {
+                    const btn = document.getElementById('option' + i);
+                    if (!btn) continue;
+                    
+                    btn.disabled = true;
+                    
+                    if (i === question.correctAnswer) {
+                        btn.classList.add('correct');
+                        btn.innerHTML = '<span>' + question.options[i] + '</span><span>✓</span>';
+                    } else if (i === this.selectedAnswer) {
+                        btn.classList.add('wrong');
+                        btn.innerHTML = '<span>' + question.options[i] + '</span><span>✗</span>';
+                    }
+                }
+                
+                this.showFeedback(isCorrect, 'answered');
+            }
+
+            showFeedback(isCorrect, type) {
+                const question = this.quiz.questions[this.currentQuestion];
+                const questionCard = document.getElementById('questionCard');
+                
+                let feedbackHTML = '';
+                
+                if (type === 'timeout') {
+                    feedbackHTML = `
+                        <div class="feedback-box wrong">
+                            <p style="font-weight: 600; margin: 0;">
+                                ⏱️ Time's up! The correct answer was: ${question.options[question.correctAnswer]}
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    feedbackHTML = `
+                        <div class="feedback-box ${isCorrect ? 'correct' : 'wrong'}">
+                            <p style="font-weight: 600; margin: 0;">
+                                ${isCorrect 
+                                    ? '🎉 Correct! You earned 100 points!'
+                                    : '❌ Wrong! The correct answer is: ' + question.options[question.correctAnswer]
+                                }
+                            </p>
+                        </div>
+                    `;
+                }
+                
+                const nextBtnText = this.currentQuestion < this.quiz.questions.length - 1 
+                    ? 'Next Question →' 
+                    : 'Finish Quiz 🏆';
+                
+                feedbackHTML += `
+                    <button class="btn-primary" onclick="game.handleNextQuestion()" style="width: 100%; margin-top: 1rem;">
+                        ${nextBtnText}
+                    </button>
+                `;
+                
+                const feedbackDiv = document.getElementById('feedbackArea');
+                if (feedbackDiv) {
+                    feedbackDiv.innerHTML = feedbackHTML;
+                }
+            }
+
+            handleNextQuestion() {
+                if (this.currentQuestion < this.quiz.questions.length - 1) {
+                    this.currentQuestion++;
+                    this.selectedAnswer = null;
+                    this.isAnswered = false;
+                    this.timeLeft = 30;
+                    this.render();
+                    this.startTimer();
+                } else {
+                    this.finishQuiz();
+                }
+            }
+
+            finishQuiz() {
+                this.stopTimer();
+                wallet.addPoints(this.score);
+                this.renderResult();
+            }
+
+            render() {
+                const container = document.getElementById('gameContainer');
+                const progress = ((this.currentQuestion + 1) / this.quiz.questions.length) * 100;
+                
+                container.innerHTML = `
+                    <div class="quiz-game-header">
+                        <h1 class="quiz-game-title">${this.quiz.title}</h1>
+                        <div class="quiz-stats">
+                            <div class="stat-badge points">
+                                <span>🏆</span>
+                                <span id="score">${this.score} pts</span>
+                            </div>
+                            <div class="stat-badge timer" id="timerBadge">
+                                <span>⏱️</span>
+                                <span id="timer">${this.timeLeft}s</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                    <p class="progress-text">Question ${this.currentQuestion + 1} of ${this.quiz.questions.length}</p>
+                    
+                    <div class="question-card" id="questionCard">
+                        ${this.renderQuestionContent()}
+                        <div id="feedbackArea"></div>
+                    </div>
+                `;
+            }
+
+            renderQuestionContent() {
+                const question = this.quiz.questions[this.currentQuestion];
+                return `
+                    <h2 class="question-text">${question.question}</h2>
+                    <div class="options-grid">
+                        ${question.options.map((option, index) => `
+                            <button class="option-btn" onclick="game.handleAnswer(${index})" id="option${index}">
+                                <span>${option}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            renderResult() {
+                const totalQuestions = this.quiz.questions.length;
+                const inrEarned = (this.score / 1000).toFixed(2);
+                
+                const container = document.getElementById('gameContainer');
+                container.innerHTML = `
+                    <div class="result-card">
+                        <div class="result-icon">🏆</div>
+                        <h1 class="result-title">Quiz Completed!</h1>
+                        
+                        <div class="result-stats">
+                            <div class="result-stat points">
+                                <p class="result-stat-label">Total Points</p>
+                                <p class="result-stat-value">${this.score}</p>
+                            </div>
+                            <div class="result-stat correct">
+                                <p class="result-stat-label">Correct Answers</p>
+                                <p class="result-stat-value">${this.correctAnswers}/${totalQuestions}</p>
+                            </div>
+                            <div class="result-stat earnings">
+                                <p class="result-stat-label">Earnings</p>
+                                <p class="result-stat-value">₹${inrEarned}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="result-message">
+                            <span>🎁</span>
+                            <span>Prize Credited to Your Wallet!</span>
+                        </div>
+                        <p style="color: #9ca3af; max-width: 32rem; margin: 0 auto;">
+                            You earned ${this.score} points! Keep playing to reach 1000 points and cashout ₹1 INR.
+                        </p>
+                        
+                        <div class="result-actions">
+                            <a href="quizzes.html" class="btn-primary btn-large">Play More Quizzes</a>
+                            <a href="wallet.html" class="btn-secondary btn-large">View Wallet</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize game on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const quizId = urlParams.get('id');
+
+            if (!quizId) {
+                window.location.href = 'quizzes.html';
+            } else {
+                game = new QuizGame(quizId);
+            }
+        });
+
+        // Cleanup timer on page unload
+        window.addEventListener('beforeunload', function() {
+            if (game && game.timer) {
+                game.stopTimer();
+            }
+        });
+    </script>
+</body>
+</html>
